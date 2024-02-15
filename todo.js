@@ -20,6 +20,13 @@ function ajout(submitterID, eventt, fatherID, childElement, nameID, valueID) {
 
         if(value.trim().length !== 0 && name.trim().length !== 0){
             child.textContent = `${name}:  ${value}`;
+
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = '🗑';
+            deleteButton.addEventListener(eventt, () => {
+                father.removeChild(child);});
+            child.appendChild(deleteButton);
+            
             father.appendChild(child);
             document.querySelector(nameID).value='';
             document.querySelector(valueID).value='';
@@ -28,4 +35,4 @@ function ajout(submitterID, eventt, fatherID, childElement, nameID, valueID) {
     });
 }
 
-ajout('button', 'click', '#list', 'li', '#name', '#content');
+ajout('button', 'click', '#list', 'pre', '#name', '#content');
