@@ -14,11 +14,11 @@ function generateRandomColor() {
   return color;
 }
 
-function change(value,property,tochange){
-    tochange.style[property]=value;
-  
-}
-const listItems = document.querySelectorAll('#myList li');
+
+const listItems = document.querySelectorAll('ol li');
 listItems.forEach(item => {
-    item.addEventListener('click',function(){change(generateRandomColor() ,'color',item);});
-})
+  item.addEventListener('click', () => {
+    const randomColor = generateRandomColor();
+    item.style.color = randomColor;
+  });
+});
