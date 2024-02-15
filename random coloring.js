@@ -1,24 +1,16 @@
 
-
-function generate(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-
 function generateRandomColor() {
-  const r = generate(1, 254);
-  const g = generate(1, 255);
-  const b = generate(0, 255);
-  const color = `rgb(${r}, ${g}, ${b})`;
-  
-  return color;
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
+const ol = document.querySelector('ol');
 
-const listItems = document.querySelectorAll('ol li');
-listItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const randomColor = generateRandomColor();
-    item.style.color = randomColor;
-  });
+ol.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI') {
+    e.target.style.backgroundColor = generateRandomColor();
+  }
 });
+
