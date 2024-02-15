@@ -12,19 +12,19 @@ function ajout(submitterID, eventt, fatherID, childElement, nameID, valueID) {
     let submitter = document.querySelector(submitterID);
     submitter.addEventListener(eventt, function(event) {
         event.preventDefault();
-        
-    let father = document.querySelector(fatherID);
-    let child = document.createElement(childElement);
-    let name = document.querySelector(nameID).value;
-    let value = document.querySelector(valueID).value;
-       
-        if(value &&name){
-        child.textContent = `${name}:  ${value}`;
-        father.appendChild(child);
-        document.querySelector(nameID).value='';
-        document.querySelector(valueID).value='';
+
+        let father = document.querySelector(fatherID);
+        let child = document.createElement(childElement);
+        let name = document.querySelector(nameID).value;
+        let value = document.querySelector(valueID).value;
+
+        if(value.trim().length !== 0 && name.trim().length !== 0){
+            child.textContent = `${name}:  ${value}`;
+            father.appendChild(child);
+            document.querySelector(nameID).value='';
+            document.querySelector(valueID).value='';
         }
-        
+
     });
 }
 
