@@ -12,27 +12,24 @@ function ajout(submitterID, eventt, fatherID, childElement, nameID, valueID) {
     let submitter = document.querySelector(submitterID);
     submitter.addEventListener(eventt, function(event) {
         event.preventDefault();
-
         let father = document.querySelector(fatherID);
         let child = document.createElement(childElement);
-        let name = document.querySelector(nameID).value.trim();
-        let value = document.querySelector(valueID).value.trim();
+        let name = document.querySelector(nameID).value;
+        let value = document.querySelector(valueID).value;
 
         if(value.trim().length !== 0 && name.trim().length !== 0){
-            child.textContent = `${name}:${value}`;
-
-            let deleteButton = document.createElement('button');
-            deleteButton.textContent = '🗑';
-            deleteButton.addEventListener(eventt, () => {
-                father.removeChild(child);});
-            child.appendChild(deleteButton);
-            
-            father.appendChild(child);
+            child.textContent = `${name}:  ${value}`;
             document.querySelector(nameID).value='';
             document.querySelector(valueID).value='';
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = '🗑';
+            child.appendChild(deleteButton);
+            father.appendChild(child);
+            document.querySelector(".left").addEventListener(eventt, (e) => {
+                e.target.parentNode.parentNode.removeChild(e.target.parentNode);});
+
         }
 
     });
 }
-
 ajout('button', 'click', '#list', 'pre', '#name', '#content');
