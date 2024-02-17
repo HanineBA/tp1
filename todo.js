@@ -15,11 +15,11 @@ function ajout(submitterID, eventt, fatherID, childElement, nameID, valueID) {
 
         let father = document.querySelector(fatherID);
         let child = document.createElement(childElement);
-        let name = document.querySelector(nameID).value;
-        let value = document.querySelector(valueID).value;
+        let name = document.querySelector(nameID).value.trim();
+        let value = document.querySelector(valueID).value.trim();
 
         if(value.trim().length !== 0 && name.trim().length !== 0){
-            child.textContent = `${name}:  ${value}`;
+            child.textContent = `${name}:${value}`;
 
             let deleteButton = document.createElement('button');
             deleteButton.textContent = '🗑';
